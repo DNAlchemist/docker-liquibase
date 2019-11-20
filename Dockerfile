@@ -2,15 +2,19 @@ FROM java
 
 MAINTAINER SequenceIq
 
+# # download liquibase
+# # ADD http://sourceforge.net/projects/liquibase/files/Liquibase%20Core/liquibase-3.2.2-bin.tar.gz/download /tmp/liquibase-3.2.2-bin.tar.gz
+# COPY lib/liquibase-3.2.2-bin.tar.gz /tmp/liquibase-3.2.2-bin.tar.gz
+
 # download liquibase
-# ADD http://sourceforge.net/projects/liquibase/files/Liquibase%20Core/liquibase-3.2.2-bin.tar.gz/download /tmp/liquibase-3.2.2-bin.tar.gz
-COPY lib/liquibase-3.2.2-bin.tar.gz /tmp/liquibase-3.2.2-bin.tar.gz
+# ADD https://github.com/liquibase/liquibase/releases?after=liquibase-parent-3.5.4 /tmp/liquibase-3.5.3-bin.tar.gz
+COPY lib/liquibase-3.5.3-bin.tar.gz /tmp/liquibase-3.5.3-bin.tar.gz
 
 # Create a directory for liquibase
 RUN mkdir /opt/liquibase
 
 # Unpack the distribution
-RUN tar -xzf /tmp/liquibase-3.2.2-bin.tar.gz -C /opt/liquibase
+RUN tar -xzf /tmp/liquibase-3.5.3-bin.tar.gz -C /opt/liquibase
 RUN chmod +x /opt/liquibase/liquibase
 
 # Symlink to liquibase to be on the path
